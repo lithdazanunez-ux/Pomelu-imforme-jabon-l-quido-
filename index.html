@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pomelú - Proyecto de Química. Elaboración de jabón líquido para manos.">
+    <title>Pomelú | Jabón líquido para manos</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff8fb;
+            color: #3b3036;
+            line-height: 1.7;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #f0dce5;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(80, 40, 60, 0.08);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #b94f78;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5c4851;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #b94f78;
+        }
+
+        /* PORTADA */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #fff8fb, #fbe5ef);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ffffff;
+            color: #b94f78;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(100, 50, 70, 0.08);
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            color: #a83f6b;
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 400;
+            color: #5d4650;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #6d5b63;
+            font-size: 1.05rem;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 13px 28px;
+            background: #b94f78;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #96395f;
+            transform: translateY(-2px);
+        }
+
+        /* SECCIONES */
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #a83f6b;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #77656d;
+        }
+
+        /* TARJETAS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #f0dce5;
+            box-shadow: 0 8px 25px rgba(80, 40, 60, 0.07);
+        }
+
+        .card h3 {
+            color: #a83f6b;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #66565d;
+        }
+
+        /* OBJETIVOS */
+        .objectives {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid #f0dce5;
+        }
+
+        .objectives h3 {
+            color: #a83f6b;
+            margin-bottom: 15px;
+        }
+
+        .objectives ul {
+            padding-left: 22px;
+            margin-bottom: 25px;
+        }
+
+        /* TABLA */
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 18px;
+            border: 1px solid #f0dce5;
+            box-shadow: 0 8px 25px rgba(80, 40, 60, 0.06);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th {
+            background: #b94f78;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #f0dce5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* PROCEDIMIENTO */
+        .steps {
+            display: grid;
+            gap: 18px;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 24px;
+            border-radius: 18px;
+            border: 1px solid #f0dce5;
+            box-shadow: 0 5px 20px rgba(80, 40, 60, 0.05);
+        }
+
+        .step-number {
+            min-width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #f4c2d5;
+            color: #8f3159;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            color: #a83f6b;
+            margin-bottom: 5px;
+        }
+
+        /* FORMULAS */
+        .formula {
+            text-align: center;
+            background: #fff0f6;
+            border: 1px solid #f0cbdc;
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        .chemical-formula {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #a83f6b;
+            letter-spacing: 2px;
+        }
+
+        /* EXPLICACIÓN */
+        .highlight {
+            background: linear-gradient(135deg, #fff0f6, #ffffff);
+            padding: 35px;
+            border-radius: 22px;
+            border-left: 5px solid #b94f78;
+        }
+
+        /* CARACTERÍSTICAS */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 18px;
+        }
+
+        .feature {
+            text-align: center;
+            background: white;
+            padding: 25px 15px;
+            border-radius: 18px;
+            border: 1px solid #f0dce5;
+        }
+
+        .feature strong {
+            display: block;
+            color: #a83f6b;
+            margin-bottom: 5px;
+        }
+
+        /* PRECAUCIONES */
+        .warning {
+            background: #fff9f2;
+            border: 1px solid #f0dfc9;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .warning ul {
+            padding-left: 22px;
+        }
+
+        /* INTEGRANTES */
+        .team {
+            text-align: center;
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 40px 25px;
+            border: 1px solid #f0dce5;
+        }
+
+        .team p {
+            margin: 7px 0;
+        }
+
+        .school {
+            margin-top: 25px;
+            color: #a83f6b;
+            font-weight: bold;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #3e3036;
+            color: #f8eaf0;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer strong {
+            color: #f3b4cd;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 750px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            section {
+                padding: 60px 18px;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <div class="logo">Pomelú</div>
+
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#proyecto">Proyecto</a></li>
+            <li><a href="#materiales">Materiales</a></li>
+            <li><a href="#procedimiento">Procedimiento</a></li>
+            <li><a href="#quimica">Química</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+        </ul>
+    </nav>
+
+    <!-- PORTADA -->
+    <header class="hero" id="inicio">
+        <div class="hero-content">
+
+            <span class="tag">PROYECTO DE QUÍMICA · 11-3</span>
+
+            <h1>Pomelú</h1>
+
+            <h2>Jabón líquido para manos</h2>
+
+            <p>
+                Un proyecto escolar que relaciona la química con la elaboración
+                de un producto cotidiano destinado a la higiene y el cuidado de las manos.
+            </p>
+
+            <a href="#proyecto" class="hero-button">
+                Conocer el proyecto
+            </a>
+
+        </div>
+    </header>
+
+    <!-- INTRODUCCIÓN -->
+    <section id="proyecto">
+
+        <div class="section-title">
+            <h2>Sobre el proyecto</h2>
+            <p>Introducción y objetivos</p>
+        </div>
+
+        <div class="highlight">
+
+            <p>
+                La química está presente en numerosos productos utilizados diariamente,
+                entre ellos los productos destinados a la higiene personal.
+                El jabón líquido para manos es un ejemplo de cómo diferentes sustancias
+                pueden combinarse para obtener un producto con propiedades específicas
+                de limpieza, apariencia y textura.
+            </p>
+
+            <br>
+
+            <p>
+                Pomelú consiste en la elaboración de un jabón líquido para manos a partir
+                de una base para jabón, agua destilada, glicerina, colorante rosado y
+                fragancia de chicle. El producto fue diseñado para ser presentado en un
+                recipiente con una capacidad aproximada de 89 mL.
+            </p>
+
+            <br>
+
+            <p>
+                El proyecto busca relacionar los conocimientos adquiridos en la asignatura
+                de Química con un proceso práctico, identificando las características y
+                funciones de los componentes empleados.
+            </p>
+
+        </div>
+
+        <div class="objectives" style="margin-top: 30px;">
+
+            <h3>Objetivo general</h3>
+
+            <p>
+                Elaborar un jabón líquido para manos denominado Pomelú mediante la
+                combinación de diferentes componentes, aplicando conocimientos básicos
+                de química y reconociendo la función de cada sustancia dentro del producto.
+            </p>
+
+            <br>
+
+            <h3>Objetivos específicos</h3>
+
+            <ul>
+                <li>Identificar los principales componentes empleados en la elaboración de Pomelú.</li>
+                <li>Reconocer las propiedades y funciones de cada componente.</li>
+                <li>Relacionar el proceso con conceptos químicos como mezclas y acción de los tensioactivos.</li>
+                <li>Elaborar un producto de higiene con características determinadas.</li>
+                <li>Comprender la importancia del jabón en la higiene de las manos.</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section>
+
+        <div class="section-title">
+            <h2>Características del producto</h2>
+            <p>Así es Pomelú</p>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <strong>Producto</strong>
+                Jabón líquido
+            </div>
+
+            <div class="feature">
+                <strong>Capacidad</strong>
+                89 mL aprox.
+            </div>
+
+            <div class="feature">
+                <strong>Color</strong>
+                Rosado
+            </div>
+
+            <div class="feature">
+                <strong>Aroma</strong>
+                Chicle
+            </div>
+
+            <div class="feature">
+                <strong>Textura</strong>
+                Líquida y homogénea
+            </div>
+
+            <div class="feature">
+                <strong>Uso</strong>
+                Higiene de manos
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- MATERIALES -->
+    <section id="materiales">
+
+        <div class="section-title">
+            <h2>Materiales y cantidades</h2>
+            <p>Formulación escolar aproximada para un recipiente de 89 mL</p>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Cantidad</th>
+                        <th>Función</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Base para jabón líquido</td>
+                        <td>70 mL</td>
+                        <td>Componente principal de limpieza</td>
+                    </tr>
+
+                    <tr>
+                        <td>Agua destilada</td>
+                        <td>12 mL</td>
+                        <td>Diluyente y medio de mezcla</td>
+                    </tr>
+
+                    <tr>
+                        <td>Glicerina</td>
+                        <td>5 mL</td>
+                        <td>Humectante</td>
+                    </tr>
+
+                    <tr>
+                        <td>Fragancia de chicle</td>
+                        <td>1,5 mL</td>
+                        <td>Aporta aroma</td>
+                    </tr>
+
+                    <tr>
+                        <td>Colorante rosado</td>
+                        <td>0,5 mL aprox.</td>
+                        <td>Aporta color</td>
+                    </tr>
+
+                    <tr>
+                        <th>Total aproximado</th>
+                        <th>89 mL</th>
+                        <th>Producto final</th>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="card-grid" style="margin-top: 30px;">
+
+            <div class="card">
+                <h3>Materiales de trabajo</h3>
+                <p>
+                    Recipiente para realizar la mezcla, instrumento de medición,
+                    utensilio para mezclar, embudo, recipiente de 89 mL,
+                    guantes y elementos de protección.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROCEDIMIENTO -->
+    <section id="procedimiento">
+
+        <div class="section-title">
+            <h2>Procedimiento</h2>
+            <p>Proceso de elaboración de Pomelú</p>
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">01</div>
+                <div>
+                    <h3>Preparación</h3>
+                    <p>
+                        Se limpiaron y organizaron los recipientes, instrumentos
+                        y componentes necesarios para realizar la preparación.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <div>
+                    <h3>Base para jabón</h3>
+                    <p>
+                        Se colocaron aproximadamente 70 mL de base para jabón
+                        líquido en un recipiente limpio.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <div>
+                    <h3>Agua destilada</h3>
+                    <p>
+                        Se agregaron aproximadamente 12 mL de agua destilada
+                        y se mezcló lentamente para evitar la formación excesiva de espuma.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">04</div>
+                <div>
+                    <h3>Glicerina</h3>
+                    <p>
+                        Se incorporaron aproximadamente 5 mL de glicerina
+                        y se mezcló cuidadosamente hasta distribuirla de manera uniforme.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">05</div>
+                <div>
+                    <h3>Fragancia</h3>
+                    <p>
+                        Se agregaron aproximadamente 1,5 mL de fragancia de chicle
+                        y se mezcló suavemente.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">06</div>
+                <div>
+                    <h3>Colorante</h3>
+                    <p>
+                        Se incorporó aproximadamente 0,5 mL de colorante rosado,
+                        ajustando la cantidad según la intensidad deseada.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">07</div>
+                <div>
+                    <h3>Homogeneización</h3>
+                    <p>
+                        Se mezclaron cuidadosamente todos los componentes hasta
+                        obtener una preparación uniforme.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">08</div>
+                <div>
+                    <h3>Envasado</h3>
+                    <p>
+                        Finalmente, la preparación se trasladó al recipiente
+                        de aproximadamente 89 mL mediante un embudo.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- QUÍMICA -->
+    <section id="quimica">
+
+        <div class="section-title">
+            <h2>La química de Pomelú</h2>
+            <p>Composición y función de los componentes</p>
+        </div>
+
+        <div class="card-grid">
+
+            <div class="card">
+                <h3>Glicerina</h3>
+                <p>
+                    La glicerina, también conocida como glicerol, es un compuesto
+                    orgánico utilizado principalmente por sus propiedades humectantes.
+                </p>
+
+                <div class="formula">
+                    <div class="chemical-formula">C₃H₈O₃</div>
+                    <p>Fórmula química del glicerol</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Agua destilada</h3>
+                <p>
+                    El agua funciona como medio de mezcla y diluyente dentro de la preparación.
+                </p>
+
+                <div class="formula">
+                    <div class="chemical-formula">H₂O</div>
+                    <p>Fórmula química del agua</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Base para jabón</h3>
+                <p>
+                    Es una formulación que puede contener diferentes sustancias,
+                    especialmente agentes tensioactivos. Por ello no posee una única
+                    fórmula química general.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Fragancia de chicle</h3>
+                <p>
+                    Es una mezcla de sustancias aromáticas. Su función principal
+                    es proporcionar el aroma característico del producto.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Colorante rosado</h3>
+                <p>
+                    Su composición depende del colorante comercial utilizado.
+                    Su función es proporcionar la coloración característica de Pomelú.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FUNCIÓN DEL JABÓN -->
+    <section>
+
+        <div class="section-title">
+            <h2>¿Cómo funciona el jabón?</h2>
+            <p>Principio químico de la limpieza</p>
+        </div>
+
+        <div class="highlight">
+
+            <p>
+                El funcionamiento de los productos limpiadores está relacionado
+                principalmente con los <strong>tensioactivos</strong>.
+            </p>
+
+            <br>
+
+            <p>
+                Estas sustancias poseen una estructura que les permite interactuar
+                tanto con el agua como con sustancias grasas. Una parte de estas
+                moléculas presenta afinidad por el agua, mientras que otra presenta
+                afinidad por sustancias que no se mezclan fácilmente con ella, como las grasas.
+            </p>
+
+            <br>
+
+            <p>
+                Durante el lavado de las manos, el jabón y el agua, acompañados de
+                la acción mecánica del frotamiento, favorecen el desprendimiento de
+                suciedad, grasa y microorganismos de la superficie de la piel.
+            </p>
+
+            <br>
+
+            <p>
+                Al enjuagar las manos, el agua permite arrastrar estas sustancias
+                y eliminarlas.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- IMPORTANCIA -->
+    <section>
+
+        <div class="section-title">
+            <h2>Importancia del jabón</h2>
+            <p>Química aplicada a la higiene</p>
+        </div>
+
+        <div class="card">
+
+            <p>
+                El jabón es un elemento fundamental para la higiene personal debido
+                a su capacidad para facilitar la eliminación de suciedad, grasas y
+                microorganismos presentes en las manos.
+            </p>
+
+            <br>
+
+            <p>
+                Las manos tienen contacto constante con objetos y superficies,
+                por lo que pueden convertirse en un medio de transporte de microorganismos.
+                El lavado adecuado con agua y jabón ayuda a reducir esta contaminación
+                y contribuye a disminuir la propagación de microorganismos.
+            </p>
+
+            <br>
+
+            <p>
+                Además, Pomelú representa un ejemplo de la aplicación de la química
+                en la vida cotidiana, ya que su funcionamiento depende de las
+                propiedades de las sustancias que lo componen.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- RESULTADOS -->
+    <section>
+
+        <div class="section-title">
+            <h2>Resultados</h2>
+            <p>Características observadas</p>
+        </div>
+
+        <div class="card-grid">
+
+            <div class="card">
+                <h3>Presentación</h3>
+                <p>
+                    Se obtuvo un jabón líquido para manos presentado
+                    en un recipiente de aproximadamente 89 mL.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Aspecto</h3>
+                <p>
+                    El producto presenta una coloración rosada,
+                    aroma a chicle y textura líquida y homogénea.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Aprendizaje</h3>
+                <p>
+                    El proyecto permitió relacionar conceptos químicos
+                    con un proceso práctico y cotidiano.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PRECAUCIONES -->
+    <section>
+
+        <div class="section-title">
+            <h2>Precauciones</h2>
+            <p>Medidas de seguridad</p>
+        </div>
+
+        <div class="warning">
+
+            <ul>
+                <li>Evitar el contacto directo con los ojos.</li>
+                <li>No ingerir el producto.</li>
+                <li>Mantener fuera del alcance de niños pequeños.</li>
+                <li>Utilizar recipientes y utensilios limpios.</li>
+                <li>No mezclar sustancias desconocidas.</li>
+                <li>Utilizar elementos de protección durante la elaboración.</li>
+                <li>Seguir las recomendaciones de seguridad de los fabricantes.</li>
+                <li>Suspender su utilización si produce irritación.</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- CONCLUSIÓN -->
+    <section>
+
+        <div class="section-title">
+            <h2>Conclusión</h2>
+            <p>Reflexión final del proyecto</p>
+        </div>
+
+        <div class="highlight">
+
+            <p>
+                La elaboración de Pomelú permitió aplicar conocimientos de química
+                en la creación de un producto de uso cotidiano relacionado con
+                la higiene personal.
+            </p>
+
+            <br>
+
+            <p>
+                A través del proyecto se identificaron las funciones de los principales
+                componentes utilizados y se comprendió que cada uno contribuye de una
+                manera diferente a las características finales del producto.
+            </p>
+
+            <br>
+
+            <p>
+                La base para jabón aporta principalmente la capacidad limpiadora,
+                el agua funciona como medio de mezcla, la glicerina cumple una función
+                humectante y la fragancia y el colorante proporcionan características
+                sensoriales y visuales.
+            </p>
+
+            <br>
+
+            <p>
+                En conclusión, Pomelú representa una aplicación práctica de la química
+                en un producto cotidiano y demuestra cómo el conocimiento de las
+                propiedades de diferentes sustancias puede utilizarse para desarrollar
+                una preparación con características específicas.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo">
+
+        <div class="section-title">
+            <h2>Equipo de trabajo</h2>
+            <p>Proyecto de Química · Grado 11-3</p>
+        </div>
+
+        <div class="team">
+
+            <p><strong>Lith Daniela Daza Núñez</strong></p>
+            <p><strong>Lucía Belén Vega Duarte</strong></p>
+            <p><strong>Breylli Beatriz Fuentes Páez</strong></p>
+            <p><strong>María Yulieth Nieves Romero</strong></p>
+
+            <p class="school">
+                Institución Educativa Luis Carmelo<br>
+                San Juan del Cesar, La Guajira
+            </p>
+
+            <p>
+                Docente: Katherine Iñán
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FUENTES -->
+    <section>
+
+        <div class="section-title">
+            <h2>Fuentes de consulta</h2>
+            <p>Referencias utilizadas para el proyecto</p>
+        </div>
+
+        <div class="card">
+
+            <ul style="padding-left: 22px;">
+
+                <li>
+                    Información sobre las propiedades químicas del glicerol.
+                </li>
+
+                <li>
+                    Información sobre las propiedades del agua.
+                </li>
+
+                <li>
+                    Información sobre tensioactivos y mecanismos de limpieza.
+                </li>
+
+                <li>
+                    Información sobre higiene y lavado de manos.
+                </li>
+
+                <li>
+                    Etiquetas, fichas técnicas y recomendaciones de seguridad
+                    de los productos utilizados durante la elaboración.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- PIE -->
+    <footer>
+
+        <p>
+            <strong>Pomelú</strong> · Jabón líquido para manos
+        </p>
+
+        <p>
+            Proyecto de Química · Grado 11-3
+        </p>
+
+        <p>
+            Institución Educativa Luis Carmelo · San Juan del Cesar, La Guajira
+        </p>
+
+    </footer>
+
+</body>
+  </html>
