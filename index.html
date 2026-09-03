@@ -1101,49 +1101,5 @@
 
 </body>
   </html>
-/* ============================= */
-/* GALERÍA DE EVIDENCIAS */
-/* ============================= */
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
 
-.gallery-item {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid #f0dce5;
-    box-shadow: 0 8px 25px rgba(80, 40, 60, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(80, 40, 60, 0.13);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-}
-
-.gallery-caption {
-    padding: 20px;
-}
-
-.gallery-caption h3 {
-    color: #a83f6b;
-    margin-bottom: 7px;
-}
-
-.gallery-caption p {
-    color: #66565d;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
