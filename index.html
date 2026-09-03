@@ -280,7 +280,70 @@
             border-radius: 22px;
             border-left: 5px solid #b94f78;
         }
+<!-- GALERÍA DE EVIDENCIAS -->
+<section id="galeria" class="section">
+    <div class="container">
 
+        <h2>Galería de evidencias</h2>
+
+        <p class="section-intro">
+            En esta galería se presentan algunas evidencias del proceso
+            de elaboración y presentación del jabón líquido para manos Pomelú.
+        </p>
+
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <img src="IMG-20260823-WA0059.jpg" alt="Evidencia del proyecto Pomelú">
+                <div class="gallery-caption">
+                    <h3>Proceso de elaboración</h3>
+                    <p>Evidencia del proceso de elaboración de Pomelú.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="IMG-20260823-WA0062.jpg" alt="Proceso de elaboración de Pomelú">
+                <div class="gallery-caption">
+                    <h3>Preparación del producto</h3>
+                    <p>Preparación de los materiales e ingredientes utilizados.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="IMG-20260823-WA0063.jpg" alt="Elaboración del jabón Pomelú">
+                <div class="gallery-caption">
+                    <h3>Elaboración</h3>
+                    <p>Parte del proceso de elaboración del jabón líquido.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="IMG-20260823-WA0066.jpg" alt="Evidencia del proyecto Pomelú">
+                <div class="gallery-caption">
+                    <h3>Proceso del proyecto</h3>
+                    <p>Evidencia del desarrollo del proyecto Pomelú.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="IMG-20260823-WA0041.jpg" alt="Producto Pomelú">
+                <div class="gallery-caption">
+                    <h3>Presentación</h3>
+                    <p>Presentación del producto elaborado.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="IMG-20260823-WA0040.jpg" alt="Producto final Pomelú">
+                <div class="gallery-caption">
+                    <h3>Producto final</h3>
+                    <p>Resultado final del jabón líquido para manos Pomelú.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
         /* CARACTERÍSTICAS */
         .features {
             display: grid;
@@ -1038,3 +1101,49 @@
 
 </body>
   </html>
+/* ============================= */
+/* GALERÍA DE EVIDENCIAS */
+/* ============================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #f0dce5;
+    box-shadow: 0 8px 25px rgba(80, 40, 60, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(80, 40, 60, 0.13);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-caption {
+    padding: 20px;
+}
+
+.gallery-caption h3 {
+    color: #a83f6b;
+    margin-bottom: 7px;
+}
+
+.gallery-caption p {
+    color: #66565d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
